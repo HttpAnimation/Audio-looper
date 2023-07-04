@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loop Audio with Dark Mode</title>
+  <style>
+    /* Dark Mode Styles */
+    body {
+      background-color: #111;
+      color: #fff;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    /* Modern UI Styles */
+    input[type="file"] {
+      margin-bottom: 10px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Loop Audio with Dark Mode</h1>
+    <input type="file" id="audioFile" accept="audio/*">
+    <button onclick="playLoop()">Loop Audio</button>
+    <audio id="audioPlayer" controls></audio>
+  </div>
+
+  <script>
+    function playLoop() {
+      const fileInput = document.getElementById('audioFile');
+      const audioPlayer = document.getElementById('audioPlayer');
+      
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const fileURL = URL.createObjectURL(file);
+
+        audioPlayer.src = fileURL;
+        audioPlayer.loop = true;
+        audioPlayer.play();
+      }
+    }
+  </script>
+</body>
+</html>
